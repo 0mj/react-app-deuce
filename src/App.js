@@ -12,12 +12,12 @@ class App extends Component {
     otherState: 'some udder value'
   };
 
-  switchHandler = () => {
+  switchHandler = (newName) => {
     // console.log('Was clicked!');
     // DON'T DO THIS: this.state.persons[0].name = 'Maximilian';
     this.setState({
       persons: [
-        { name: 'zoF', age: 100 },
+        { name: newName, age: 100 },
         { name: 'goR', age: 200 }
       ]
     });
@@ -30,7 +30,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">~</h1>
         </header>
-        <button onClick={this.switchHandler}>switch</button>
+        <button onClick={this.switchHandler.bind(this,'Matthieu')}>switch</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
@@ -38,6 +38,7 @@ class App extends Component {
         <Person
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
+          click={this.switchHandler.bind(this,'JJ')}
         >
           My Hobbies: Racing
         </Person>

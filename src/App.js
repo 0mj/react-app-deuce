@@ -34,10 +34,11 @@ class App extends Component {
 
   render() {
     
+    //  CSS Styling in javascript mmkay
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: '#fff',
       font: 'inherit',
-      border: '1px solid blue',
+      border: '4px solid red',
       padding: '8px'
     }
 

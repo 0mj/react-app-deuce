@@ -8,16 +8,19 @@ const app = props => {
     persons: [
       { name: 'Foz', age: 1 },
       { name: 'Rog', age: 2 }
-    ],
-    otherState: 'some udder value'
+    ]
+    // ,otherState: 'some udder value'
   });
-  console.log(personsState);
+
+  const [otherState, setOtherState] = useState('some oober state');
+  console.log(personsState, otherState);
   const switchHandler = () => {
       setPersonsState({
         persons: [
           { name: 'zoF', age: 100 },
           { name: 'goR', age: 200 }
         ]
+        // ,otherState: personsState.otherState
       })
   }
   

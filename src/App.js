@@ -30,7 +30,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">~</h1>
         </header>
-        <button onClick={this.switchHandler.bind(this,'Matthieu')}>switch</button>
+        {/* FOLLOWIN SYNTAX IS NOT RECOMMENDED */}
+        <button onClick={() => this.switchHandler('ZZZZEEEEEBBB')}>switch</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}

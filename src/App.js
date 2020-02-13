@@ -1,43 +1,50 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import logo from './logo.svg';import './App.css';
 import './App.css';
 import Person from './Person/Person';
 
-const app = props => {
-  const [ personsState, setPersonsState ] = useState({
+class App extends Component {
+  state = {
     persons: [
       { name: 'Foz', age: 1 },
       { name: 'Rog', age: 2 }
     ],
     otherState: 'some udder value'
-  });
-  // console.log(personsState);
-  // you can have functions inside of functions. this is javascript
-  const switchHandler = () => {
-      setPersonsState({
-        persons: [
-          { name: 'zoF', age: 100 },
-          { name: 'goR', age: 200 }
-        ]
-      })
-  }
-  
+  };
+
+  switchHandler = () => {
+    // console.log('Was clicked!');
+    // DON'T DO THIS: this.state.persons[0].name = 'Maximilian';
+    this.setState({
+      persons: [
+        { name: 'zoF', age: 100 },
+        { name: 'goR', age: 200 }
+      ]
+    });
+  };
+
+  render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">~</h1>
         </header>
-        {/* onClick capital 'C' because we JSX */}
-        <button onClick={switchHandler}>switch</button>
-        <Person name={personsState.persons[0].name} age={personsState.persons[0].age} />
-        <Person name={personsState.persons[1].name} age={personsState.persons[1].age} />
+        <button onClick={this.switchHandler}>switch</button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+        />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+        >
+          My Hobbies: Racing
+        </Person>
       </div>
     );
-  
+    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
+  }
 }
 
-export default app;
-
-
-
+export default App;

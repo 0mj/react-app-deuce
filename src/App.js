@@ -33,6 +33,14 @@ class App extends Component {
   }
 
   render() {
+    
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px'
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -40,10 +48,13 @@ class App extends Component {
           <h1 className="App-title">~</h1>
         </header>
         {/* FOLLOWIN SYNTAX IS NOT RECOMMENDED */}
-        <button onClick={() => this.switchHandler('ZZZZEEEEEBBB')}>switch</button>
+        <button 
+          style={style}
+          onClick={() => this.switchHandler('ZZZZEEEEEBBB')}>switch</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
+          changed={this.nameChangeHandler}
         />
         <Person
           name={this.state.persons[1].name}

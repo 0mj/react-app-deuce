@@ -11,7 +11,7 @@ const app = props => {
     ],
     otherState: 'some udder value'
   });
-console.log(personsState);
+  console.log(personsState);
   const switchHandler = () => {
       setPersonsState({
         persons: [

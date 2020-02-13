@@ -11,7 +11,8 @@ const app = props => {
     ],
     otherState: 'some udder value'
   });
-console.log(personsState);
+  // console.log(personsState);
+  // you can have functions inside of functions. this is javascript
   const switchHandler = () => {
       setPersonsState({
         persons: [

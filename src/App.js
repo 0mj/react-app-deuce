@@ -1,73 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';import './App.css';
 import './App.css';
-import Person from './Person/Person';
+
+import UserInput from './UserInput/UserInput';
+import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
   state = {
-    persons: [
-      { name: 'Foz', age: 1 },
-      { name: 'Rog', age: 2 }
-    ],
-    otherState: 'some udder value'
-  };
+    username: 'supermax'
+  }
 
-  switchHandler = (newName) => {
-    // console.log('Was clicked!');
-    // DON'T DO THIS: this.state.persons[0].name = 'Maximilian';
-    this.setState({
-      persons: [
-        { name: newName, age: 100 },
-        { name: 'goR', age: 200 }
-      ]
-    });
-  };
-
-  nameChangeHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Tom', age: 50 },
-        { name: event.target.value, age: 75 }
-      ]
-    });
+  usernameChangedHandler = (event) => {
+    this.setState({username: event.target.value});
   }
 
   render() {
-    
-    //  CSS Styling in javascript mmkay
-    const style = {
-      backgroundColor: '#fff',
-      font: 'inherit',
-      border: '4px solid red',
-      padding: '8px'
-    }
-
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">~</h1>
-        </header>
-        {/* FOLLOWIN SYNTAX IS NOT RECOMMENDED */}
-        <button 
-          style={style}
-          onClick={() => this.switchHandler('ZZZZEEEEEBBB')}>switch</button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          changed={this.nameChangeHandler}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchHandler.bind(this,'JJ')}
-          changed={this.nameChangeHandler}
-        >
-          My Hobbies: Racing
-        </Person>
+        <ol>
+          <li>Create TWO new components: UserInput and UserOutput</li>
+          <li>UserInput should hold an input element, UserOutput two paragraphs</li>
+          <li>Output multiple UserOutput components in the App component (any paragraph texts of your choice)</li>
+          <li>Pass a username (of your choice) to UserOutput via props and display it there</li>
+          <li>Add state to the App component (=> the username) and pass the username to the UserOutput component</li>
+          <li>Add a method to manipulate the state (=> an event-handler method)</li>
+          <li>Pass the event-handler method reference to the UserInput component and bind it to the input-change event</li>
+          <li>Ensure that the new input entered by the user overwrites the old username passed to UserOutput</li>
+          <li>Add two-way-binding to your input (in UserInput) to also display the starting username</li>
+          <li>Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li>
+        </ol>
+        <UserInput 
+          changed={this.usernameChangedHandler} 
+          currentName={this.state.username} />
+        <UserOutput userName={this.state.username} />
+        <UserOutput userName={this.state.username} />
+        <UserOutput userName="Max" />
       </div>
     );
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
 }
 

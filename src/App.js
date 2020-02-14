@@ -9,7 +9,8 @@ class App extends Component {
       { name: 'Foz', age: 1 },
       { name: 'Rog', age: 2 }
     ],
-    otherState: 'some udder value'
+    otherState: 'some udder value',
+    showPersons: false
   };
 
   switchHandler = (newName) => {
@@ -32,6 +33,11 @@ class App extends Component {
     });
   }
 
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  }
+
   render() {
     
     //  CSS Styling in javascript mmkay
@@ -48,23 +54,28 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">~</h1>
         </header>
-        {/* FOLLOWIN SYNTAX IS NOT RECOMMENDED */}
+        {/* FOLLOWING SYNTAX IS NOT RECOMMENDED */}
         <button 
           style={style}
-          onClick={() => this.switchHandler('ZZZZEEEEEBBB')}>switch</button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          changed={this.nameChangeHandler}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchHandler.bind(this,'JJ')}
-          changed={this.nameChangeHandler}
-        >
-          My Hobbies: Racing
-        </Person>
+          onClick={this.togglePersonsHandler}>+++</button>
+        { 
+          this.state.showPersons === true ? 
+          <div>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+              changed={this.nameChangeHandler}
+            />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              click={this.switchHandler.bind(this,'JJ')}
+              changed={this.nameChangeHandler}
+            >
+              My Hobbies: Racing
+            </Person>
+          </div> : null
+        }
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));

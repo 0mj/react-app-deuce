@@ -6,8 +6,11 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
+      { name: 'Aba', age: 1 },
       { name: 'Foz', age: 1 },
-      { name: 'Rog', age: 2 }
+      { name: 'Sco', age: 2 },
+      { name: 'Bro', age: 4 },
+      { name: 'Rog', age: 3 }
     ],
     otherState: 'some udder value',
     showPersons: false
@@ -44,28 +47,18 @@ class App extends Component {
     const style = {
       backgroundColor: '#fff',
       font: 'inherit',
-      border: '4px solid red',
-      padding: '8px'
+      border_radius:'12px'
     }
 
     let persons = null; 
     if(this.state.showPersons) {
       persons = (
         <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-            changed={this.nameChangeHandler}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.switchHandler.bind(this, 'JJ')}
-            changed={this.nameChangeHandler}
-          >
-            My Hobbies: Racing
-            </Person>
-        
+          {this.state.persons.map(person => {
+            return <Person 
+            name={person.name} 
+            age={person.age} /> 
+          })}
         </div>
       );
     }

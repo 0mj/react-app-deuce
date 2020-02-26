@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';import './App.css';
+import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
 
@@ -27,13 +27,23 @@ class App extends Component {
     });
   };
 
-  nameChangeHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Tom', age: 50 },
-        { name: event.target.value, age: 75 }
-      ]
+  nameChangeHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
     });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    // const person = Object.assign({}, this.state.persons[personIndex]); // alternative syntax to spread operator
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons });
   }
 
   deletePersonHandler = (personIndex) => {
@@ -66,7 +76,9 @@ class App extends Component {
             click={() => this.deletePersonHandler(index)}
             key={person.id}
             name={person.name} 
-            age={person.age} /> 
+            age={person.age}
+              changed={(event) => this.nameChangeHandler(event, person.id)}
+            /> 
           })}
         </div>
       );

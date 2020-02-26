@@ -62,7 +62,8 @@ class App extends Component {
     
     //  CSS Styling in javascript mmkay
     const style = {
-      backgroundColor: '#fff',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border_radius:'12px'
     }
@@ -82,6 +83,7 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = 'red';
     }
 
     return (
